@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conecta Oficios | Red de profesionales verificados en Panamá</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#060B1F;
+    --navy-900:#0B1638;
+    --blue-800:#14245F;
+    --blue-700:#1B3B8C;
+    --blue-600:#2445A8;
+    --blue-500:#3358D6;
+    --blue-100:#E7ECFC;
+    --paper:#F5F7FC;
+    --card:#FFFFFF;
+    --ink:#0E1526;
+    --muted:#56618A;
+    --line:#CBD5F0;
+    --gold-600:#A9791E;
+    --gold-100:#FBF3DE;
+    --radius:14px;
+    --shadow-sm:0 1px 2px rgba(11,22,56,.06);
+    --shadow-md:0 8px 24px -8px rgba(11,22,56,.18);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .container{max-width:1180px;margin:0 auto;padding:0 1.5rem;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+  h1,h2,h3{font-family:'Fraunces',serif;color:var(--navy-900);letter-spacing:-0.01em;}
+  a{color:inherit;}
+  svg{display:block;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    background:var(--card);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:50;
+  }
+  .header-inner{
+    display:flex;justify-content:space-between;align-items:center;height:76px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:.6rem;
+    font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;
+    color:var(--navy-900); text-decoration:none;
+  }
+  .logo span{color:var(--blue-600);}
+  .logo svg{flex-shrink:0;}
+
+  /* ---------- BRAND MARK (hero) ---------- */
+  .brand-mark{display:flex; flex-direction:column; align-items:center; gap:.85rem; margin-bottom:2rem;}
+  .brand-word{
+    font-family:'Fraunces',serif; font-weight:700; font-size:2rem;
+    color:#fff; letter-spacing:-0.01em;
+  }
+  .brand-word span{color:#6E8CF0;}
+  .brand-tagline{
+    font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.16em;
+    color:#9FB3EE; text-transform:uppercase;
+  }
+  .btn-ghost{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem;
+    color:var(--blue-700); text-decoration:none;
+    border:1.5px solid var(--blue-700); border-radius:10px;
+    padding:.6rem 1.1rem; transition:all .2s ease;
+  }
+  .btn-ghost:hover{background:var(--blue-700);color:#fff;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    background:var(--navy-950);
+    color:#fff;
+    padding:4.5rem 0 5rem;
+  }
+  .grid-overlay{
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(90,120,220,.14) 0 1px, transparent 1px 56px),
+      repeating-linear-gradient(90deg, rgba(90,120,220,.14) 0 1px, transparent 1px 56px);
+    -webkit-mask-image:radial-gradient(ellipse at center, #000 30%, transparent 78%);
+            mask-image:radial-gradient(ellipse at center, #000 30%, transparent 78%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; text-align:center; max-width:760px; margin:0 auto;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:.75rem; letter-spacing:.14em;
+    color:#9FB3EE; margin-bottom:1.1rem; text-transform:uppercase;
+  }
+  .hero h1{
+    font-size:2.6rem; font-weight:600; line-height:1.18; color:#fff; margin-bottom:1.15rem;
+  }
+  .hero .lead{
+    font-size:1.05rem; color:#B8C4E8; max-width:600px; margin:0 auto 2.4rem;
+  }
+
+  .search-panel{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    display:flex;
+    max-width:560px; margin:0 auto;
+    box-shadow:var(--shadow-md);
+    padding:.4rem;
+  }
+  .search-panel select{
+    flex:1; border:none; outline:none; background:transparent;
+    font-family:'Inter',sans-serif; font-size:.95rem; font-weight:500;
+    color:var(--ink); padding:.75rem 1rem; cursor:pointer;
+  }
+  .search-panel button{
+    display:flex; align-items:center; gap:.5rem;
+    background:var(--blue-700); color:#fff; border:none;
+    border-radius:9px; padding:.75rem 1.4rem; font-weight:600; font-size:.92rem;
+    font-family:'Inter',sans-serif; cursor:pointer; transition:background .2s;
+    white-space:nowrap;
+  }
+  .search-panel button:hover{background:var(--blue-600);}
+
+  /* ---------- HOW IT WORKS ---------- */
+  .how{padding:4.5rem 0 3.5rem;}
+  .how-head{text-align:center; max-width:520px; margin:0 auto 2.75rem;}
+  .how-head p.eyebrow-light{
+    font-family:'IBM Plex Mono',monospace; font-size:.75rem; letter-spacing:.14em;
+    color:var(--blue-600); margin-bottom:.75rem; text-transform:uppercase;
+  }
+  .how-head h2{font-size:1.7rem; font-weight:600;}
+  .steps{
+    list-style:none; display:grid; grid-template-columns:repeat(3,1fr); gap:2.25rem;
+    position:relative;
+  }
+  .steps li{position:relative; padding-top:.25rem;}
+  .step-num{
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:.95rem;
+    color:var(--blue-700); display:inline-flex; align-items:center; justify-content:center;
+    width:38px; height:38px; border:1.5px solid var(--blue-700); border-radius:50%;
+    margin-bottom:1rem;
+  }
+  .steps h3{font-size:1.05rem; font-weight:600; margin-bottom:.4rem;}
+  .steps p{font-size:.92rem; color:var(--muted);}
+
+  /* ---------- DIRECTORY ---------- */
+  .directory{padding:1rem 0 5rem;}
+  .section-title{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:2rem; border-bottom:1px solid var(--line); padding-bottom:1rem;
+  }
+  .section-title h2{font-size:1.4rem; font-weight:600;}
+  .section-title span{
+    font-family:'IBM Plex Mono',monospace; font-size:.8rem; color:var(--muted);
+  }
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.75rem;}
+
+  .card{
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:var(--shadow-sm);
+    transition:transform .2s ease, box-shadow .2s ease;
+    display:flex; flex-direction:column; justify-content:space-between;
+    opacity:0; transform:translateY(14px);
+  }
+  .card.is-visible{opacity:1; transform:translateY(0); transition:opacity .5s ease, transform .5s ease, box-shadow .2s ease;}
+  .card:hover{box-shadow:var(--shadow-md); transform:translateY(-3px);}
+
+  .card::before, .card::after{
+    content:""; position:absolute; width:16px; height:16px; pointer-events:none; z-index:2;
+  }
+  .card::before{top:10px; left:10px; border-top:2px solid #fff; border-left:2px solid #fff; opacity:.85;}
+  .card::after{bottom:-1px; right:-1px; border-bottom:2px solid var(--blue-500); border-right:2px solid var(--blue-500);}
+  .card.premium::after{border-color:var(--gold-600);}
+  .card.premium{background:linear-gradient(180deg,var(--gold-100) 0%, #fff 46%);}
+
+  .card-photo{width:100%; height:190px; overflow:hidden; background:var(--blue-100); position:relative;}
+  .card-photo img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease;}
+  .card:hover .card-photo img{transform:scale(1.05);}
+  .card-photo::after{
+    content:""; position:absolute; inset:auto 0 0 0; height:60%;
+    background:linear-gradient(180deg, rgba(11,22,56,0) 0%, rgba(11,22,56,.55) 100%);
+  }
+  .photo-caption{
+    position:absolute; left:1.5rem; bottom:.85rem; z-index:1;
+    color:#fff; font-family:'Inter',sans-serif; font-weight:600; font-size:1rem;
+    text-shadow:0 1px 3px rgba(0,0,0,.3);
+  }
+
+  .card-content{padding:1.25rem 1.5rem 0;}
+
+  .tag-line{
+    font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.08em;
+    color:var(--muted); text-transform:uppercase; margin-bottom:.85rem;
+    display:flex; align-items:center; gap:.4rem;
+  }
+  .tag-line.verified{color:var(--gold-600);}
+
+  .name-area{margin-bottom:1.1rem;}
+  .name-area h3{font-size:1.1rem; font-weight:600; color:var(--navy-900); font-family:'Inter',sans-serif;}
+  .profession-badge{
+    display:inline-block; background:var(--blue-100); color:var(--blue-700);
+    padding:.15rem .55rem; border-radius:6px; font-size:.72rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:.02em; margin-top:.35rem;
+  }
+
+  .rating-row{display:flex; align-items:center; gap:.85rem; margin-bottom:1.15rem;}
+  .rating-ring{
+    width:46px; height:46px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .rating-ring span{
+    width:36px; height:36px; border-radius:50%; background:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:.78rem; color:var(--navy-900);
+  }
+  .rating-meta{font-size:.82rem; color:var(--muted);}
+  .rating-meta strong{color:var(--ink); font-weight:600;}
+
+  .details{border-top:1px dashed var(--line); padding-top:.9rem; margin-bottom:1.4rem;}
+  .detail-item{display:flex; justify-content:space-between; gap:.75rem; margin-bottom:.55rem; font-size:.85rem;}
+  .detail-label{color:var(--muted);}
+  .detail-value{font-weight:600; color:var(--navy-900); font-family:'IBM Plex Mono',monospace; font-size:.82rem; text-align:right;}
+
+  .btn-contact{
+    display:flex; align-items:center; justify-content:center; gap:.55rem;
+    background:var(--navy-900); color:#fff; text-decoration:none;
+    padding:.8rem; border-radius:9px; font-weight:600; font-size:.9rem;
+    transition:background .2s; margin:0 1.5rem 1.5rem;
+  }
+  .btn-contact:hover{background:var(--blue-700);}
+
+  /* ---------- JOIN CTA ---------- */
+  .join{
+    position:relative; overflow:hidden;
+    background:var(--navy-950); color:#fff; padding:4.5rem 0; text-align:center;
+  }
+  .join .grid-overlay{opacity:.8;}
+  .join-inner{position:relative; max-width:560px; margin:0 auto;}
+  .join h2{color:#fff; font-size:1.8rem; font-weight:600; margin-bottom:.9rem;}
+  .join p{color:#B8C4E8; margin-bottom:2.2rem; font-size:.98rem;}
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:.6rem;
+    background:var(--blue-500); color:#fff; text-decoration:none;
+    padding:.9rem 1.8rem; border-radius:10px; font-weight:600; font-size:.95rem;
+    transition:background .2s;
+  }
+  .btn-primary:hover{background:#4E6EE0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-900); color:#8393BF; padding:2rem 0; text-align:center; font-size:.82rem;}
+  .footer-contact{
+    display:flex; justify-content:center; align-items:center; gap:1.75rem;
+    flex-wrap:wrap; margin-bottom:1rem;
+  }
+  .footer-contact a{
+    display:inline-flex; align-items:center; gap:.5rem;
+    color:#B8C4E8; text-decoration:none; font-size:.85rem; font-weight:500;
+    transition:color .2s ease;
+  }
+  .footer-contact a:hover{ color:#fff; }
+  .footer-contact svg{ flex-shrink:0; }
+  .footer-rule{
+    max-width:220px; height:1px; margin:0 auto 1.1rem;
+    background:linear-gradient(90deg, transparent, rgba(159,179,238,.35), transparent);
+  }
+
+  @media (max-width:760px){
+    .steps{grid-template-columns:1fr;}
+    .hero h1{font-size:2rem;}
+    .search-panel{flex-direction:column; border-radius:var(--radius); padding:.75rem; gap:.6rem;}
+    .search-panel select{border:1px solid var(--line); border-radius:8px;}
+    .search-panel button{border-radius:8px; justify-content:center;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .card{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+
+<!-- ======================================================
+     BLOQUE NUEVO: mejoras visuales (cursor, preloader,
+     mision/vision, lo que ofrecemos, logo). No se tocó
+     ni una línea del <style> original de arriba.
+     ====================================================== -->
+<style id="enhancements">
+
+  /* ---- cursor personalizado ---- */
+  @media (hover:hover) and (pointer:fine){
+    body{cursor:none;}
+    a, button, select, .card, .offer-card, .mv-card, .logo{cursor:none;}
+  }
+  .cursor-dot, .cursor-ring{
+    position:fixed; top:0; left:0; pointer-events:none; z-index:10000;
+    border-radius:50%; transform:translate(-100px,-100px);
+    will-change:transform;
+  }
+  .cursor-dot{
+    width:6px; height:6px; background:var(--blue-500);
+    transition:transform .05s linear, opacity .2s ease;
+  }
+  .cursor-ring{
+    width:34px; height:34px; margin:-14px 0 0 -14px;
+    border:1.5px solid rgba(51,88,214,.55);
+    transition:transform .12s ease-out, width .2s ease, height .2s ease,
+               border-color .2s ease, background .2s ease, opacity .2s ease;
+  }
+  .cursor-ring.is-hover{
+    width:56px; height:56px; margin:-14px 0 0 -14px;
+    background:rgba(51,88,214,.08);
+    border-color:var(--blue-500);
+  }
+  .cursor-ring.on-dark{ border-color:rgba(255,255,255,.6); }
+  .cursor-ring.on-dark.is-hover{ background:rgba(255,255,255,.1); border-color:#fff; }
+  body.cursor-hidden .cursor-dot, body.cursor-hidden .cursor-ring{ opacity:0; }
+
+  /* ---- preloader: logo de la marca al iniciar ---- */
+  .preloader{
+    position:fixed; inset:0; z-index:20000;
+    background:var(--navy-950);
+    display:flex; align-items:center; justify-content:center;
+    transition:opacity .6s ease, visibility .6s ease;
+  }
+  .preloader::before{
+    content:""; position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(90,120,220,.14) 0 1px, transparent 1px 56px),
+      repeating-linear-gradient(90deg, rgba(90,120,220,.14) 0 1px, transparent 1px 56px);
+    -webkit-mask-image:radial-gradient(ellipse at center, #000 30%, transparent 78%);
+            mask-image:radial-gradient(ellipse at center, #000 30%, transparent 78%);
+  }
+  .preloader.is-done{ opacity:0; visibility:hidden; pointer-events:none; }
+  .preloader-inner{
+    position:relative; display:flex; flex-direction:column; align-items:center; gap:1.1rem;
+  }
+  .preloader-ring{ position:relative; width:104px; height:104px; display:flex; align-items:center; justify-content:center; }
+  .preloader-ring svg.spin-track{
+    position:absolute; inset:0; width:100%; height:100%;
+    transform:rotate(-90deg);
+  }
+  .preloader-ring svg.spin-track circle{
+    fill:none; stroke:rgba(159,179,238,.22); stroke-width:2.5;
+  }
+  .preloader-ring svg.spin-track circle.fill{
+    stroke:var(--blue-500); stroke-linecap:round;
+    stroke-dasharray:290; stroke-dashoffset:290;
+    animation:ring-draw 1.5s cubic-bezier(.65,0,.35,1) forwards;
+  }
+  @keyframes ring-draw{ to{ stroke-dashoffset:0; } }
+  .preloader-logo{
+    opacity:0; transform:scale(.82);
+    animation:logo-pop .7s cubic-bezier(.34,1.56,.64,1) .25s forwards;
+  }
+  @keyframes logo-pop{ to{ opacity:1; transform:scale(1); } }
+  .preloader-word{
+    font-family:'Fraunces',serif; font-weight:700; font-size:1.35rem; color:#fff;
+    opacity:0; transform:translateY(8px);
+    animation:word-in .6s ease .55s forwards;
+  }
+  .preloader-word span{ color:#6E8CF0; }
+  @keyframes word-in{ to{ opacity:1; transform:translateY(0); } }
+  .preloader-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.16em;
+    text-transform:uppercase; color:#6E8CF0; opacity:0;
+    animation:word-in .6s ease .8s forwards;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .preloader{ display:none; }
+  }
+
+  /* ---- fotos de perfil enfocadas en el rostro ---- */
+  .directory .card-photo img{ object-position: center 18%; }
+
+  /* ---- logo más notorio ---- */
+  header .logo{ font-size:1.5rem; gap:.7rem; }
+  header .logo svg{ width:42px; height:42px; }
+  header .logo span.brand-shine{
+    background:linear-gradient(90deg, var(--blue-700) 0%, var(--blue-500) 45%, var(--gold-600) 100%);
+    background-size:200% auto;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:shine 5s linear infinite;
+  }
+  @keyframes shine{ to{ background-position:-200% center; } }
+  .brand-mark svg{ animation:logo-pulse 3.2s ease-in-out infinite; filter:drop-shadow(0 0 18px rgba(110,140,240,.55)); }
+  @keyframes logo-pulse{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.06); }
+  }
+
+  /* ---- resaltado al saltar directo a un perfil desde el buscador ---- */
+  .card.jump-highlight{
+    animation:jump-pulse 1.6s ease 2;
+  }
+  @keyframes jump-pulse{
+    0%,100%{ box-shadow:var(--shadow-sm); border-color:var(--line); }
+    35%{ box-shadow:0 0 0 4px rgba(51,88,214,.28), var(--shadow-md); border-color:var(--blue-500); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .card.jump-highlight{ animation:none; box-shadow:0 0 0 4px rgba(51,88,214,.28); }
+  }
+
+  /* ---- reveal genérico para las secciones nuevas ---- */
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; }
+  }
+
+  /* ---- Misión y Visión (rediseño: sin íconos, estilo editorial) ---- */
+  .mv{ padding:1rem 0 5rem; }
+  .mv-panel{
+    position:relative; overflow:hidden;
+    background:var(--navy-950); border-radius:20px;
+    padding:3.5rem 3rem;
+    color:#fff;
+  }
+  .mv-panel .grid-overlay{ opacity:.7; }
+  .mv-grid{
+    position:relative; display:grid; grid-template-columns:1fr auto 1fr;
+    gap:2.5rem; align-items:stretch;
+  }
+  .mv-divider{
+    width:1px; background:linear-gradient(180deg, transparent, rgba(159,179,238,.4) 20%, rgba(159,179,238,.4) 80%, transparent);
+  }
+  .mv-card{ position:relative; padding:.25rem .25rem; }
+  .mv-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.18em;
+    text-transform:uppercase; color:#6E8CF0; margin-bottom:1rem; display:block;
+  }
+  .mv-card.vision .mv-eyebrow{ color:var(--gold-600); }
+  .mv-card h3{
+    font-size:1.9rem; font-weight:600; margin-bottom:1.1rem; color:#fff;
+    line-height:1.2;
+  }
+  .mv-card q, .mv-card p{
+    font-size:1.02rem; color:#B8C4E8; font-style:normal; quotes:none;
+  }
+  .mv-mark{
+    display:block; font-family:'Fraunces',serif; font-size:3rem; line-height:1;
+    color:rgba(255,255,255,.16); margin-bottom:-1.1rem;
+  }
+  .mv-card.vision .mv-mark{ color:rgba(169,121,30,.28); }
+  @media (max-width:760px){
+    .mv-panel{ padding:2.5rem 1.5rem; }
+    .mv-grid{ grid-template-columns:1fr; }
+    .mv-divider{ width:100%; height:1px; background:linear-gradient(90deg, transparent, rgba(159,179,238,.4) 20%, rgba(159,179,238,.4) 80%, transparent); }
+  }
+
+  /* ---- Lo que ofrecemos ---- */
+  .offer{ padding:1rem 0 4.5rem; }
+  .offer-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(255px,1fr)); gap:1.5rem; }
+  .offer-card{
+    position:relative; background:var(--card); border:1px solid var(--line);
+    border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .offer-card:hover{ transform:translateY(-5px); box-shadow:var(--shadow-md); }
+  .offer-photo{ height:180px; overflow:hidden; position:relative; }
+  .offer-photo img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+  .offer-card:hover .offer-photo img{ transform:scale(1.08); }
+  .offer-photo::after{
+    content:""; position:absolute; inset:auto 0 0 0; height:55%;
+    background:linear-gradient(180deg, rgba(11,22,56,0) 0%, rgba(11,22,56,.6) 100%);
+  }
+  .offer-tag{
+    position:absolute; left:1.1rem; bottom:.8rem; z-index:1; color:#fff;
+    font-weight:600; font-family:'Inter',sans-serif; font-size:1rem;
+    text-shadow:0 1px 3px rgba(0,0,0,.3);
+  }
+  .offer-body{ padding:1.1rem 1.3rem 1.4rem; }
+  .offer-body p{ font-size:.87rem; color:var(--muted); }
+
+  /* ---- Modal de acceso por correo ---- */
+  .email-gate{
+    position:fixed; inset:0; z-index:30000;
+    background:rgba(6,11,31,.72);
+    display:flex; align-items:center; justify-content:center;
+    padding:1.25rem;
+  }
+  .email-gate[hidden]{ display:none; }
+  .email-gate-card{
+    position:relative;
+    background:var(--card); border-radius:var(--radius);
+    max-width:420px; width:100%;
+    padding:2.25rem 2rem 2rem;
+    box-shadow:var(--shadow-md);
+    text-align:center;
+  }
+  .email-gate-card h2{ font-size:1.35rem; margin-bottom:.6rem; }
+  .email-gate-card p{ color:var(--muted); font-size:.9rem; margin-bottom:1.5rem; }
+  .email-gate-form{ display:flex; flex-direction:column; gap:.75rem; }
+  .email-gate-form input[type="email"]{
+    border:1.5px solid var(--line); border-radius:9px;
+    padding:.75rem 1rem; font-family:'Inter',sans-serif; font-size:.95rem;
+    outline:none;
+  }
+  .email-gate-form input[type="email"]:focus{ border-color:var(--blue-500); }
+  .email-gate-form button{
+    background:var(--blue-700); color:#fff; border:none; border-radius:9px;
+    padding:.8rem; font-weight:600; font-size:.92rem; cursor:pointer;
+    transition:background .2s;
+  }
+  .email-gate-form button:hover{ background:var(--blue-600); }
+  .email-gate-error{ color:#B3261E; font-size:.82rem; min-height:1.1em; }
+  .email-gate-note{
+    font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.04em;
+    color:var(--muted); margin-top:1.1rem;
+  }
+
+  /* ---- Calificación con estrellas y comentarios por técnico ---- */
+  .user-actions{
+    margin:0 1.5rem 1.4rem; padding-top:1rem;
+    border-top:1px dashed var(--line);
+  }
+  .rate-block{ display:flex; align-items:center; flex-wrap:wrap; gap:.5rem; margin-bottom:.85rem; }
+  .rate-label{ font-size:.82rem; color:var(--muted); width:100%; }
+  .stars{ display:flex; gap:.15rem; }
+  .star-btn{
+    background:none; border:none; cursor:pointer; padding:0;
+    font-size:1.35rem; line-height:1; color:var(--line);
+    transition:color .15s ease, transform .15s ease;
+  }
+  .star-btn:hover, .star-btn:hover ~ .star-btn{ transform:scale(1.05); }
+  .star-btn.is-hovered, .star-btn.is-active{ color:var(--gold-600); }
+  .rate-summary{ font-size:.8rem; color:var(--muted); }
+
+  .comments-block summary{
+    cursor:pointer; font-size:.85rem; font-weight:600; color:var(--blue-700);
+    list-style:none; display:flex; align-items:center; gap:.4rem;
+  }
+  .comments-block summary::-webkit-details-marker{ display:none; }
+  .comments-block summary::before{
+    content:"▸"; display:inline-block; transition:transform .15s ease;
+  }
+  .comments-block[open] summary::before{ transform:rotate(90deg); }
+  .comments-list{ margin:.85rem 0; display:flex; flex-direction:column; gap:.6rem; max-height:220px; overflow-y:auto; }
+  .comment-item{
+    background:var(--paper); border:1px solid var(--line); border-radius:9px;
+    padding:.6rem .75rem; font-size:.83rem; color:var(--ink);
+  }
+  .comment-item .comment-meta{
+    display:block; font-family:'IBM Plex Mono',monospace; font-size:.68rem;
+    color:var(--muted); margin-top:.3rem;
+  }
+  .comments-empty{ font-size:.8rem; color:var(--muted); font-style:italic; }
+  .comment-form{ display:flex; flex-direction:column; gap:.5rem; }
+  .comment-input{
+    border:1.5px solid var(--line); border-radius:9px; padding:.6rem .75rem;
+    font-family:'Inter',sans-serif; font-size:.85rem; resize:vertical; outline:none;
+  }
+  .comment-input:focus{ border-color:var(--blue-500); }
+  .comment-submit{
+    align-self:flex-start;
+    background:var(--navy-900); color:#fff; border:none; border-radius:8px;
+    padding:.5rem 1rem; font-size:.82rem; font-weight:600; cursor:pointer;
+    transition:background .2s;
+  }
+  .comment-submit:hover{ background:var(--blue-700); }
+</style>
+</head>
+<body>
+
+<!-- ---------- acceso por correo ---------- -->
+<div class="email-gate" id="emailGate">
+  <div class="email-gate-card">
+    <h2>Bienvenido a Conecta Oficios</h2>
+    <p>Déjanos tu correo para continuar. Lo usamos para identificar tus calificaciones y comentarios en cada perfil.</p>
+    <form class="email-gate-form" id="emailGateForm">
+      <input type="email" id="emailGateInput" placeholder="tu@correo.com" required autocomplete="email">
+      <span class="email-gate-error" id="emailGateError"></span>
+      <button type="submit">Continuar</button>
+    </form>
+    <p class="email-gate-note">No compartimos tu correo con los profesionales.</p>
+  </div>
+</div>
+
+<!-- ---------- cursor personalizado ---------- -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ---------- preloader: logo de Conecta Oficios ---------- -->
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <div class="preloader-ring">
+      <svg class="spin-track" viewBox="0 0 100 100" width="104" height="104">
+        <circle cx="50" cy="50" r="46"></circle>
+        <circle class="fill" cx="50" cy="50" r="46"></circle>
+      </svg>
+      <div class="preloader-logo">
+        <svg viewBox="0 0 200 200" width="54" height="54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M153.6 145 A70 70 0 1 1 153.6 55" fill="none" stroke="#3358D6" stroke-width="30" stroke-linecap="round"/>
+          <path d="M153.6 55 L180 26" stroke="#3358D6" stroke-width="26" stroke-linecap="round"/>
+          <path d="M153.6 55 L189 50" stroke="#3358D6" stroke-width="24" stroke-linecap="round"/>
+          <path d="M76 120 L100 97 L124 120" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="85" y="124" width="11" height="11" rx="2" fill="#fff"/>
+          <rect x="104" y="124" width="11" height="11" rx="2" fill="#fff"/>
+          <rect x="85" y="140" width="11" height="11" rx="2" fill="#fff"/>
+          <rect x="104" y="140" width="11" height="11" rx="2" fill="#fff"/>
+        </svg>
+      </div>
+    </div>
+    <p class="preloader-word">Conecta<span>Oficios</span></p>
+    <p class="preloader-tag">Cargando red de profesionales</p>
+  </div>
+</div>
+
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 200 200" width="34" height="34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path d="M153.6 145 A70 70 0 1 1 153.6 55" fill="none" stroke="#3358D6" stroke-width="30" stroke-linecap="round"/>
+        <path d="M153.6 55 L180 26" stroke="#3358D6" stroke-width="26" stroke-linecap="round"/>
+        <path d="M153.6 55 L189 50" stroke="#3358D6" stroke-width="24" stroke-linecap="round"/>
+        <path d="M76 120 L100 97 L124 120" fill="none" stroke="#0B1638" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="85" y="124" width="11" height="11" rx="2" fill="#0B1638"/>
+        <rect x="104" y="124" width="11" height="11" rx="2" fill="#0B1638"/>
+        <rect x="85" y="140" width="11" height="11" rx="2" fill="#0B1638"/>
+        <rect x="104" y="140" width="11" height="11" rx="2" fill="#0B1638"/>
+      </svg>
+      Conecta<span class="brand-shine">Oficios</span>
+    </a>
+    <a href="#unirse" class="btn-ghost">Publicar mi perfil profesional</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div class="brand-mark">
+      <svg viewBox="0 0 200 200" width="76" height="76" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path d="M153.6 145 A70 70 0 1 1 153.6 55" fill="none" stroke="#3358D6" stroke-width="30" stroke-linecap="round"/>
+        <path d="M153.6 55 L180 26" stroke="#3358D6" stroke-width="26" stroke-linecap="round"/>
+        <path d="M153.6 55 L189 50" stroke="#3358D6" stroke-width="24" stroke-linecap="round"/>
+        <path d="M76 120 L100 97 L124 120" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="85" y="124" width="11" height="11" rx="2" fill="#fff"/>
+        <rect x="104" y="124" width="11" height="11" rx="2" fill="#fff"/>
+        <rect x="85" y="140" width="11" height="11" rx="2" fill="#fff"/>
+        <rect x="104" y="140" width="11" height="11" rx="2" fill="#fff"/>
+      </svg>
+      <p class="brand-word">Conecta<span>Oficios</span></p>
+      <p class="brand-tagline">— Profesionales de confianza en Panamá —</p>
+    </div>
+    <h1>Profesionales de oficios, verificados por quienes ya los contrataron</h1>
+    <p class="lead">Reunimos en un solo lugar la recomendación que antes circulaba de boca en boca: electricistas, plomeros, técnicos de aire acondicionado y jardineros, evaluados por su propia comunidad.</p>
+
+    <form class="search-panel" onsubmit="return false;">
+      <label class="visually-hidden" for="oficioFilter">Selecciona un servicio</label>
+      <select id="oficioFilter">
+        <option value="todos">¿Qué servicio necesitas?</option>
+        <option value="Electricista">Electricista</option>
+        <option value="Plomero">Plomero</option>
+        <option value="Aire Acondicionado">Aire acondicionado</option>
+        <option value="Jardinero">Jardinero</option>
+      </select>
+      <button type="button" onclick="filtrarTrabajadores()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Buscar profesionales
+      </button>
+    </form>
+  </div>
+</section>
+
+<section class="how container">
+  <div class="how-head">
+    <p class="eyebrow-light">Cómo funciona</p>
+    <h2>Tres pasos para encontrar a la persona correcta</h2>
+  </div>
+  <ol class="steps">
+    <li>
+      <span class="step-num">01</span>
+      <h3>Elige el oficio</h3>
+      <p>Selecciona el servicio que necesitas del listado disponible.</p>
+    </li>
+    <li>
+      <span class="step-num">02</span>
+      <h3>Compara perfiles</h3>
+      <p>Revisa cobertura, calificación y costo referencial de cada profesional.</p>
+    </li>
+    <li>
+      <span class="step-num">03</span>
+      <h3>Contacta directo</h3>
+      <p>Escribe por WhatsApp y coordina la visita, sin intermediarios.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ================= NUEVO: Misión y Visión ================= -->
+<section class="mv container">
+  <div class="how-head">
+    <p class="eyebrow-light">Quiénes somos</p>
+    <h2>Misión y visión</h2>
+  </div>
+  <div class="mv-panel reveal">
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="mv-grid">
+      <div class="mv-card mision">
+        <span class="mv-mark" aria-hidden="true">“</span>
+        <span class="mv-eyebrow">Nuestra misión</span>
+        <h3>Confianza real, no publicidad.</h3>
+        <p>Conectar a cada hogar panameño con profesionales de oficios verificados, honestos y cercanos, devolviendo a la era digital la confianza que antes solo daba la recomendación de boca en boca.</p>
+      </div>
+      <div class="mv-divider" aria-hidden="true"></div>
+      <div class="mv-card vision">
+        <span class="mv-mark" aria-hidden="true">“</span>
+        <span class="mv-eyebrow">Nuestra visión</span>
+        <h3>La red más confiable de Panamá.</h3>
+        <p>Ser la red de confianza más grande de Panamá para profesionales de oficios, reconocida por la calidad de sus verificaciones y por dignificar el trabajo técnico independiente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NUEVO: Lo que ofrecemos ================= -->
+<section class="offer container">
+  <div class="how-head">
+    <p class="eyebrow-light">Categorías activas</p>
+    <h2>Lo que ofrecemos</h2>
+  </div>
+  <div class="offer-grid">
+    <div class="offer-card reveal">
+      <div class="offer-photo">
+        <img src="https://alertasocial.com.br/wp-content/uploads/2023/11/Quanto-custa-uma-limpeza-de-ar-condicionado.webp" alt="Técnico revisando un aire acondicionado" loading="lazy">
+        <span class="offer-tag">Aire acondicionado</span>
+      </div>
+      <div class="offer-body">
+        <p>Instalación, mantenimiento preventivo y reparación de sistemas de A/C residenciales y comerciales.</p>
+      </div>
+    </div>
+    <div class="offer-card reveal">
+      <div class="offer-photo">
+        <img src="https://i.pinimg.com/736x/3b/f1/28/3bf128309ff7477f32227947d69d0230.jpg" alt="Plomero instalando tuberías de baño" loading="lazy">
+        <span class="offer-tag">Plomería</span>
+      </div>
+      <div class="offer-body">
+        <p>Instalaciones, detección de fugas y reparaciones de tuberías con garantía sobre el trabajo realizado.</p>
+      </div>
+    </div>
+    <div class="offer-card reveal">
+      <div class="offer-photo">
+        <img src="https://vision-elec.co.uk/wp-content/uploads/2014/10/commercial-electrician-service-image.jpg" alt="Electricista revisando cableado" loading="lazy">
+        <span class="offer-tag">Electricidad</span>
+      </div>
+      <div class="offer-body">
+        <p>Diagnóstico, cableado y sistemas eléctricos seguros para tu hogar o negocio.</p>
+      </div>
+    </div>
+    <div class="offer-card reveal">
+      <div class="offer-photo">
+        <img src="https://cenacap.edu.co/wp-content/uploads/2024/01/TECNICO-LABORAL-POR-COMPETENCIAS-EN-JARDINERO-1-scaled.jpg" alt="Jardinero podando un arbusto" loading="lazy">
+        <span class="offer-tag">Jardinería</span>
+      </div>
+      <div class="offer-body">
+        <p>Diseño, poda y mantenimiento de áreas verdes con acabados prolijos y profesionales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="directory container">
+  <div class="section-title">
+    <h2 id="titulo-directorio">Todos los profesionales</h2>
+    <span id="conteo-directorio">4 perfiles</span>
+  </div>
+
+  <div class="grid" id="workersGrid">
+
+    <div class="card premium" data-oficio="Aire Acondicionado" data-id="carlos-mendoza">
+      <div class="card-photo">
+        <img src="https://bookdefotos-madrid.com/wp-content/uploads/2014/09/book82.jpg" alt="Carlos Mendoza, técnico de aire acondicionado" loading="lazy">
+        <span class="photo-caption">Carlos Mendoza</span>
+      </div>
+      <div class="card-content">
+        <p class="tag-line verified">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          Perfil verificado
+        </p>
+        <div class="name-area">
+          <span class="profession-badge">Aire acondicionado</span>
+        </div>
+        <div class="rating-row">
+          <div class="rating-ring" style="background:conic-gradient(var(--blue-500) 98%, var(--blue-100) 0);">
+            <span>4.9</span>
+          </div>
+          <div class="rating-meta"><strong>42</strong> opiniones registradas</div>
+        </div>
+        <div class="details">
+          <div class="detail-item"><span class="detail-label">Cobertura</span><span class="detail-value">Panamá · Chorrera</span></div>
+          <div class="detail-item"><span class="detail-label">Visita técnica</span><span class="detail-value">$20.00 aprox.</span></div>
+        </div>
+      </div>
+      <div class="user-actions" data-id="carlos-mendoza">
+        <div class="rate-block">
+          <span class="rate-label">Califica a este profesional</span>
+          <div class="stars" role="group" aria-label="Calificar profesional">
+            <button type="button" class="star-btn" data-value="1" aria-label="1 estrella">&#9733;</button>
+            <button type="button" class="star-btn" data-value="2" aria-label="2 estrellas">&#9733;</button>
+            <button type="button" class="star-btn" data-value="3" aria-label="3 estrellas">&#9733;</button>
+            <button type="button" class="star-btn" data-value="4" aria-label="4 estrellas">&#9733;</button>
+            <button type="button" class="star-btn" data-value="5" aria-label="5 estrellas">&#9733;</button>
+          </div>
+          <span class="rate-summary"></span>
+        </div>
+        <details class="comments-block">
+          <summary>Comentarios (<span class="comment-count">0</span>)</summary>
+          <div class="comments-list"></div>
+          <form class="comment-form">
+            <textarea class="comment-input" maxlength="300" rows="2" placeholder="Escribe un comentario sobre tu experiencia..." required></textarea>
+            <button type="submit" class="comment-submit">Publicar comentario</button>
+          </form>
+        </details>
+      </div>
+
+      <a href="https://wa.me/50767222794?text=Hola%20Carlos,%20vi%20tu%20perfil%20en%20Conecta%20Oficios." target="_blank" class="btn-contact">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.4 8.4 0 0 1-4-1L3 20l1-5.5a8.4 8.4 0 0 1-1-4A8.5 8.5 0 0 1 11.5 2 8.5 8.5 0 0 1 21 11.5z"/></svg>
+        Contactar por WhatsApp
+      </a>
+    </div>
+
+    <div class="card" data-oficio="Plomero" data-id="jorge-espinoza">
+      <div class="card-photo">
+        <img src="https://www.buffalo.edu/content/shared/www/news/staff/dinki/_jcr_content/par/image.img.original.jpg/1689175450738.jpg" alt="Jorge Espinoza, plomero" loading="lazy">
+        <span class="photo-caption">Jorge Espinoza</span>
+      </div>
+      <div class="card-content">
+        <p class="tag-line">Ficha técnica · 002</p>
+        <div class="name-area">
+          <span class="profession-badge">Plomero</span>
+        </div>
+        <div class="rating-row">
+          <div class="rating-ring" style="background:conic-gradient(var(--blue-500) 96%, var(--blue-100) 0);">
+            <span>4.8</span>
+          </div>
+          <div class="rating-meta"><strong>19</strong> opiniones registradas</div>
+        </div>
+        <div class="details">
+          <div class="detail-item"><span class="detail-label">Cobertura</span><span class="detail-value">San Miguelito · Juan Díaz</span></div>
+          <div class="detail-item"><span class="detail-label">Precio base</span><span class="detail-value">Desde $15.00</span></div>
+        </div>
+      </div>
+      <div class="user-actions" data-id="jorge-espinoza">
+        <div class="rate-block">
+          <span class="rate-label">Califica a este profesional</span>
+          <div class="stars" role="group" aria-label="Calificar profesional">
+            <button type="button" class="star-btn" data-value="1" aria-label="1 estrella">&#9733;</button>
+            <button type="button" class="star-btn" data-value="2" aria-label="2 estrellas">&#9733;</button>
+            <button type="button" class="star-btn" data-value="3" aria-label="3 estrellas">&#9733;</button>
+            <button type="button" class="star-btn" data-value="4" aria-label="4 estrellas">&#9733;</button>
+            <button type="button" class="star-btn" data-value="5" aria-label="5 estrellas">&#9733;</button>
+          </div>
+          <span class="rate-summary"></span>
+        </div>
+        <details class="comments-block">
+          <summary>Comentarios (<span class="comment-count">0</span>)</summary>
+          <div class="comments-list"></div>
+          <form class="comment-form">
+            <textarea class="comment-input" maxlength="300" rows="2" placeholder="Escribe un comentario sobre tu experiencia..." required></textarea>
+            <button type="submit" class="comment-submit">Publicar comentario</button>
+          </form>
+        </details>
+      </div>
+
+      <a href="https://wa.me/50767222794?text=Hola%20Jorge,%20vi%20tu%20perfil%20en%20Conecta%20Oficios." target="_blank" class="btn-contact">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.4 8.4 0 0 1-4-1L3 20l1-5.5a8.4 8.4 0 0 1-1-4A8.5 8.5 0 0 1 11.5 2 8.5 8.5 0 0 1 21 11.5z"/></svg>
+        Contactar por WhatsApp
+      </a>
+    </div>
+
+    <div class="card" data-oficio="Electricista" data-id="mateo-rivera">
+      <div class="card-photo">
+        <img src="https://vizualmexico.com.mx/wp-content/uploads/2014/01/AE_perfil-profesional_1_H.jpg" alt="Mateo Rivera, electricista" loading="lazy">
+        <span class="photo-caption">Mateo Rivera</span>
+      </div>
+      <div class="card-content">
+        <p class="tag-line">Ficha técnica · 003</p>
+        <div class="name-area">
+          <span class="profession-badge">Electricista</span>
+        </div>
+        <div class="rating-row">
+          <div class="rating-ring" style="background:conic-gradient(var(--blue-500) 94%, var(--blue-100) 0);">
+            <span>4.7</span>
+          </div>
+          <div class="rating-meta"><strong>31</strong> opiniones registradas</div>
+        </div>
+        <div class="details">
+          <div class="detail-item"><span class="detail-label">Cobertura</span><span class="detail-value">Área metro. · Clayton</span></div>
+          <div class="detail-item"><span class="detail-label">Precio base</span><span class="detail-value">Desde $25.00</span></div>
+        </div>
+      </div>
+      <div class="user-actions" data-id="mateo-rivera">
+        <div class="rate-block">
+          <span class="rate-label">Califica a este profesional</span>
+          <div class="stars" role="group" aria-label="Calificar profesional">
+            <button type="button" class="star-btn" data-value="1" aria-label="1 estrella">&#9733;</button>
+            <button type="button" class="star-btn" data-value="2" aria-label="2 estrellas">&#9733;</button>
+            <button type="button" class="star-btn" data-value="3" aria-label="3 estrellas">&#9733;</button>
+            <button type="button" class="star-btn" data-value="4" aria-label="4 estrellas">&#9733;</button>
+            <button type="button" class="star-btn" data-value="5" aria-label="5 estrellas">&#9733;</button>
+          </div>
+          <span class="rate-summary"></span>
+        </div>
+        <details class="comments-block">
+          <summary>Comentarios (<span class="comment-count">0</span>)</summary>
+          <div class="comments-list"></div>
+          <form class="comment-form">
+            <textarea class="comment-input" maxlength="300" rows="2" placeholder="Escribe un comentario sobre tu experiencia..." required></textarea>
+            <button type="submit" class="comment-submit">Publicar comentario</button>
+          </form>
+        </details>
+      </div>
+
+      <a href="https://wa.me/50767222794?text=Hola%20Mateo,%20vi%20tu%20perfil%20en%20Conecta%20Oficios." target="_blank" class="btn-contact">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.4 8.4 0 0 1-4-1L3 20l1-5.5a8.4 8.4 0 0 1-1-4A8.5 8.5 0 0 1 11.5 2 8.5 8.5 0 0 1 21 11.5z"/></svg>
+        Contactar por WhatsApp
+      </a>
+    </div>
+
+    <div class="card" data-oficio="Jardinero" data-id="andres-castillo">
+      <div class="card-photo">
+        <img src="https://media.istockphoto.com/id/1420000156/photo/portrait-of-a-businessman-in-a-suit-with-his-arms-crossed-in-a-modern-office-building.jpg?s=170667a&w=0&k=20&c=tXwq8spa60s7rASkcSgdNXnjn3BzMWjsN5BkHqX69xY=" alt="Andrés Castillo, jardinero" loading="lazy">
+        <span class="photo-caption">Andrés Castillo</span>
+      </div>
+      <div class="card-content">
+        <p class="tag-line">Ficha técnica · 004</p>
+        <div class="name-area">
+          <span class="profession-badge">Jardinero</span>
+        </div>
+        <div class="rating-row">
+          <div class="rating-ring" style="background:conic-gradient(var(--blue-500) 92%, var(--blue-100) 0);">
+            <span>4.6</span>
+          </div>
+          <div class="rating-meta"><strong>12</strong> opiniones registradas</div>
+        </div>
+        <div class="details">
+          <div class="detail-item"><span class="detail-label">Cobertura</span><span class="detail-value">Arraiján · Coronado</span></div>
+          <div class="detail-item"><span class="detail-label">Precio por hora</span><span class="detail-value">$10.00 aprox.</span></div>
+        </div>
+      </div>
+      <div class="user-actions" data-id="andres-castillo">
+        <div class="rate-block">
+          <span class="rate-label">Califica a este profesional</span>
+          <div class="stars" role="group" aria-label="Calificar profesional">
+            <button type="button" class="star-btn" data-value="1" aria-label="1 estrella">&#9733;</button>
+            <button type="button" class="star-btn" data-value="2" aria-label="2 estrellas">&#9733;</button>
+            <button type="button" class="star-btn" data-value="3" aria-label="3 estrellas">&#9733;</button>
+            <button type="button" class="star-btn" data-value="4" aria-label="4 estrellas">&#9733;</button>
+            <button type="button" class="star-btn" data-value="5" aria-label="5 estrellas">&#9733;</button>
+          </div>
+          <span class="rate-summary"></span>
+        </div>
+        <details class="comments-block">
+          <summary>Comentarios (<span class="comment-count">0</span>)</summary>
+          <div class="comments-list"></div>
+          <form class="comment-form">
+            <textarea class="comment-input" maxlength="300" rows="2" placeholder="Escribe un comentario sobre tu experiencia..." required></textarea>
+            <button type="submit" class="comment-submit">Publicar comentario</button>
+          </form>
+        </details>
+      </div>
+
+      <a href="https://wa.me/50767222794?text=Hola%20Andres,%20vi%20tu%20perfil%20en%20Conecta%20Oficios." target="_blank" class="btn-contact">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.4 8.4 0 0 1-4-1L3 20l1-5.5a8.4 8.4 0 0 1-1-4A8.5 8.5 0 0 1 11.5 2 8.5 8.5 0 0 1 21 11.5z"/></svg>
+        Contactar por WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section class="join" id="unirse">
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="container join-inner">
+    <h2>¿Eres un profesional de oficios en Panamá?</h2>
+    <p>Súmate a la red y recibe solicitudes directas por WhatsApp, sin comisiones por trabajo realizado. El plan premium, con posición destacada, tiene un costo de $5 al mes.</p>
+    <a href="https://wa.me/50767222794?text=Hola,%20quiero%20crear%20mi%20perfil%20profesional%20en%20Conecta%20Oficios" target="_blank" class="btn-primary">
+      Registrar mi perfil profesional
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-contact">
+      <a href="mailto:hola@conectaoficios.pa">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg>
+        hola@conectaoficios.pa
+      </a>
+      <a href="https://instagram.com/conectaoficios.pa" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @conectaoficios.pa
+      </a>
+    </div>
+    <div class="footer-rule"></div>
+    <p>&copy; 2026 Conecta Oficios. Red de profesionales de oficios en Panamá.</p>
+  </div>
+</footer>
+
+<script>
+  function filtrarTrabajadores() {
+    const filtro = document.getElementById('oficioFilter').value;
+    const tarjetas = document.querySelectorAll('.card');
+    const titulo = document.getElementById('titulo-directorio');
+    const conteo = document.getElementById('conteo-directorio');
+    let visibles = 0;
+    let primeraCoincidencia = null;
+
+    if (filtro === 'todos') {
+      titulo.innerText = 'Todos los profesionales';
+    } else {
+      titulo.innerText = 'Profesionales · ' + filtro;
+    }
+
+    tarjetas.forEach(card => {
+      const coincide = filtro === 'todos' || card.getAttribute('data-oficio') === filtro;
+      card.style.display = coincide ? 'flex' : 'none';
+      card.classList.remove('jump-highlight');
+      if (coincide) {
+        visibles++;
+        if (!primeraCoincidencia) primeraCoincidencia = card;
+      }
+    });
+
+    conteo.innerText = visibles + (visibles === 1 ? ' perfil' : ' perfiles');
+
+    // Lleva directo al perfil elegido y lo resalta un momento
+    if (filtro !== 'todos' && primeraCoincidencia) {
+      primeraCoincidencia.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => primeraCoincidencia.classList.add('jump-highlight'), 350);
+    } else {
+      document.getElementById('workersGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Revelado sutil de tarjetas al hacer scroll
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+  } else {
+    document.querySelectorAll('.card').forEach(card => card.classList.add('is-visible'));
+  }
+</script>
+
+<!-- ======================================================
+     BLOQUE NUEVO: script de mejoras (cursor, preloader,
+     revelado de las secciones nuevas). El <script> original
+     de arriba no fue modificado.
+     ====================================================== -->
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- cursor personalizado ---------- */
+  var isFinePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if (isFinePointer) {
+    var dot = document.getElementById('cursorDot');
+    var ring = document.getElementById('cursorRing');
+    var ringX = 0, ringY = 0, mouseX = 0, mouseY = 0;
+
+    window.addEventListener('mousemove', function(e){
+      mouseX = e.clientX; mouseY = e.clientY;
+      dot.style.transform = 'translate(' + (mouseX - 3) + 'px,' + (mouseY - 3) + 'px)';
+      document.body.classList.remove('cursor-hidden');
+    });
+    document.addEventListener('mouseleave', function(){ document.body.classList.add('cursor-hidden'); });
+
+    function loop(){
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      ring.style.transform = 'translate(' + ringX + 'px,' + ringY + 'px)';
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    var hoverTargets = 'a, button, select, .card, .offer-card, .mv-card, input, .btn-primary, .btn-ghost, .btn-contact';
+    document.addEventListener('mouseover', function(e){
+      if (e.target.closest(hoverTargets)) ring.classList.add('is-hover');
+    });
+    document.addEventListener('mouseout', function(e){
+      if (e.target.closest(hoverTargets)) ring.classList.remove('is-hover');
+    });
+    var darkZones = document.querySelectorAll('.hero, .join, .preloader');
+    document.addEventListener('mousemove', function(e){
+      var overDark = false;
+      darkZones.forEach(function(z){
+        var r = z.getBoundingClientRect();
+        if (e.clientY >= r.top && e.clientY <= r.bottom) overDark = true;
+      });
+      ring.classList.toggle('on-dark', overDark);
+    });
+  } else {
+    document.getElementById('cursorDot').style.display = 'none';
+    document.getElementById('cursorRing').style.display = 'none';
+  }
+
+  /* ---------- preloader: muestra el logo un instante y se desvanece ---------- */
+  var preloader = document.getElementById('preloader');
+  if (reduced) {
+    preloader.style.display = 'none';
+  } else {
+    setTimeout(function(){
+      preloader.classList.add('is-done');
+      setTimeout(function(){ preloader.remove(); }, 650);
+    }, 1600);
+  }
+
+  /* ---------- revelado de las secciones nuevas al hacer scroll ---------- */
+  if ('IntersectionObserver' in window && !reduced) {
+    var observer2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer2.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(function(el){ observer2.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
+  }
+})();
+</script>
+
+<!-- ======================================================
+     BLOQUE NUEVO: acceso por correo, calificación con
+     estrellas y comentarios por técnico. Se guardan en el
+     localStorage de este navegador (ver nota al usuario).
+     ====================================================== -->
+<script>
+(function(){
+  var STORAGE_PREFIX = 'conectaOficios:';
+
+  function readJSON(key, fallback){
+    try {
+      var raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch(e){ return fallback; }
+  }
+  function writeJSON(key, value){
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch(e){}
+  }
+
+  /* ---------- 1) Acceso por correo ---------- */
+  var gate = document.getElementById('emailGate');
+  var gateForm = document.getElementById('emailGateForm');
+  var gateInput = document.getElementById('emailGateInput');
+  var gateError = document.getElementById('emailGateError');
+  var EMAIL_KEY = STORAGE_PREFIX + 'email';
+
+  function isValidEmail(value){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+
+  var savedEmail = null;
+  try { savedEmail = localStorage.getItem(EMAIL_KEY); } catch(e){}
+
+  if (savedEmail) {
+    gate.hidden = true;
+  } else {
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  if (gateForm) {
+    gateForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var value = gateInput.value.trim();
+      if (!isValidEmail(value)) {
+        gateError.textContent = 'Ingresa un correo válido.';
+        return;
+      }
+      try { localStorage.setItem(EMAIL_KEY, value); } catch(err){}
+      gate.hidden = true;
+      document.documentElement.style.overflow = '';
+    });
+  }
+
+  function getUserEmail(){
+    var e = null;
+    try { e = localStorage.getItem(EMAIL_KEY); } catch(err){}
+    return e || 'Visitante anónimo';
+  }
+
+  /* ---------- 2) Calificación con estrellas ---------- */
+  document.querySelectorAll('.user-actions').forEach(function(block){
+    var id = block.getAttribute('data-id');
+    var starsWrap = block.querySelector('.stars');
+    var starButtons = Array.prototype.slice.call(block.querySelectorAll('.star-btn'));
+    var summary = block.querySelector('.rate-summary');
+    var RATINGS_KEY = STORAGE_PREFIX + 'ratings:' + id;
+    var MY_RATING_KEY = STORAGE_PREFIX + 'myRating:' + id;
+
+    function getRatings(){ return readJSON(RATINGS_KEY, []); }
+
+    function renderSummary(){
+      var ratings = getRatings();
+      if (ratings.length === 0) {
+        summary.textContent = 'Sé el primero en calificar';
+        return;
+      }
+      var avg = ratings.reduce(function(a,b){ return a+b; }, 0) / ratings.length;
+      summary.textContent = avg.toFixed(1) + ' de 5 · ' + ratings.length + (ratings.length === 1 ? ' calificación' : ' calificaciones');
+    }
+
+    function paintStars(value){
+      starButtons.forEach(function(btn){
+        var v = parseInt(btn.getAttribute('data-value'), 10);
+        btn.classList.toggle('is-active', v <= value);
+      });
+    }
+
+    var myRating = parseInt(localStorage.getItem(MY_RATING_KEY) || '0', 10);
+    paintStars(myRating);
+    renderSummary();
+
+    starButtons.forEach(function(btn){
+      var v = parseInt(btn.getAttribute('data-value'), 10);
+      btn.addEventListener('mouseenter', function(){ paintStars(v); });
+      btn.addEventListener('mouseleave', function(){ paintStars(myRating); });
+      btn.addEventListener('click', function(){
+        var ratings = getRatings();
+        if (myRating > 0) {
+          // reemplaza la calificación anterior de este visitante
+          var idx = ratings.indexOf(myRating);
+          if (idx > -1) ratings.splice(idx, 1);
+        }
+        ratings.push(v);
+        writeJSON(RATINGS_KEY, ratings);
+        myRating = v;
+        try { localStorage.setItem(MY_RATING_KEY, String(v)); } catch(err){}
+        paintStars(myRating);
+        renderSummary();
+      });
+    });
+
+    /* ---------- 3) Comentarios ---------- */
+    var commentsList = block.querySelector('.comments-list');
+    var commentCount = block.querySelector('.comment-count');
+    var commentForm = block.querySelector('.comment-form');
+    var commentInput = block.querySelector('.comment-input');
+    var COMMENTS_KEY = STORAGE_PREFIX + 'comments:' + id;
+
+    function getComments(){ return readJSON(COMMENTS_KEY, []); }
+
+    function renderComments(){
+      var comments = getComments();
+      commentCount.textContent = comments.length;
+      commentsList.innerHTML = '';
+      if (comments.length === 0) {
+        var empty = document.createElement('p');
+        empty.className = 'comments-empty';
+        empty.textContent = 'Todavía no hay comentarios.';
+        commentsList.appendChild(empty);
+        return;
+      }
+      comments.slice().reverse().forEach(function(c){
+        var item = document.createElement('div');
+        item.className = 'comment-item';
+        var text = document.createElement('span');
+        text.textContent = c.text;
+        var meta = document.createElement('span');
+        meta.className = 'comment-meta';
+        meta.textContent = c.email + ' · ' + c.date;
+        item.appendChild(text);
+        item.appendChild(meta);
+        commentsList.appendChild(item);
+      });
+    }
+
+    renderComments();
+
+    if (commentForm) {
+      commentForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        var text = commentInput.value.trim();
+        if (!text) return;
+        var comments = getComments();
+        comments.push({
+          text: text,
+          email: getUserEmail(),
+          date: new Date().toLocaleDateString('es-PA', { year:'numeric', month:'short', day:'numeric' })
+        });
+        writeJSON(COMMENTS_KEY, comments);
+        commentInput.value = '';
+        renderComments();
+      });
+    }
+  });
+})();
+</script>
+
+<!-- ======================================================
+     BLOQUE NUEVO 2: WhatsApp directo (logo flotante + insignia
+     por técnico) y ambientación animada estilo "herramientas
+     en movimiento". Todo se agrega por JS/CSS, sin tocar ni
+     una línea del código de arriba.
+     ====================================================== -->
+<style>
+  /* --- Botón flotante de WhatsApp (siempre visible, va directo al número general) --- */
+  .wa-fab{
+    position:fixed; right:1.4rem; bottom:1.4rem; z-index:90;
+    width:60px; height:60px; border-radius:50%;
+    background:#25D366;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 28px -8px rgba(6,11,31,.45), 0 0 0 0 rgba(37,211,102,.55);
+    text-decoration:none; animation:waPulse 2.6s ease-out infinite;
+  }
+  .wa-fab svg{width:30px; height:30px;}
+  .wa-fab:hover{transform:scale(1.08);}
+  @keyframes waPulse{
+    0%{box-shadow:0 10px 28px -8px rgba(6,11,31,.45),0 0 0 0 rgba(37,211,102,.55);}
+    70%{box-shadow:0 10px 28px -8px rgba(6,11,31,.45),0 0 0 16px rgba(37,211,102,0);}
+    100%{box-shadow:0 10px 28px -8px rgba(6,11,31,.45),0 0 0 0 rgba(37,211,102,0);}
+  }
+
+  /* --- Insignia de WhatsApp sobre la foto de cada técnico: va directo al número de ESE trabajo --- */
+  .wa-badge{
+    position:absolute; top:12px; right:12px; z-index:3;
+    width:38px; height:38px; border-radius:50%;
+    background:#25D366; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 14px rgba(6,11,31,.35);
+    text-decoration:none; transition:transform .2s ease;
+  }
+  .wa-badge svg{width:20px; height:20px;}
+  .wa-badge:hover{transform:scale(1.14) rotate(6deg);}
+
+  /* --- Herramientas flotando de fondo en el hero: sensación dinámica/moderna --- */
+  .tool-float{
+    position:absolute; opacity:.15; color:#9FB3EE; pointer-events:none; z-index:0;
+    animation:toolDrift 9s ease-in-out infinite;
+  }
+  .tool-float svg{width:100%; height:100%; display:block;}
+  @keyframes toolDrift{
+    0%,100%{ transform:translateY(0) rotate(var(--rot,0deg)); }
+    50%{ transform:translateY(-18px) rotate(calc(var(--rot,0deg) + 10deg)); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .wa-fab{animation:none;}
+    .tool-float{animation:none;}
+  }
+  @media (max-width:640px){
+    .tool-float{display:none;}
+  }
+</style>
+
+<script>
+(function(){
+  var WA_ICON = '<svg viewBox="0 0 32 32" fill="#fff"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.4.68 4.63 1.87 6.54L4 29l7.65-1.85A11.9 11.9 0 0 0 16.02 27C22.65 27 28 21.62 28 15S22.65 3 16.02 3zm0 21.8c-1.98 0-3.83-.58-5.38-1.58l-.39-.24-4.54 1.1 1.13-4.43-.26-.4A9.66 9.66 0 0 1 6.2 15c0-5.42 4.4-9.8 9.82-9.8 5.4 0 9.8 4.38 9.8 9.8s-4.4 9.8-9.8 9.8zm5.4-7.34c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.63.07-.3-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.03-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.5.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.91-2.2-.24-.57-.48-.5-.66-.5h-.56c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.87 1.21 3.07c.15.2 2.09 3.2 5.06 4.48.71.3 1.26.49 1.69.62.71.22 1.36.19 1.87.12.57-.08 1.75-.72 2-1.4.25-.7.25-1.28.17-1.4-.07-.12-.27-.2-.56-.35z"/></svg>';
+
+  /* 1) Botón flotante: reutiliza el número general que ya está en la sección "Súmate a la red" */
+  var mainWa = document.querySelector('.join a[href*="wa.me"]');
+  if (mainWa) {
+    var fab = document.createElement('a');
+    fab.href = mainWa.href;
+    fab.target = '_blank';
+    fab.rel = 'noopener';
+    fab.className = 'wa-fab';
+    fab.setAttribute('aria-label', 'Escribir por WhatsApp');
+    fab.innerHTML = WA_ICON;
+    document.body.appendChild(fab);
+  }
+
+  /* 2) Insignia directa en cada tarjeta: toma el mismo número que ya usa el botón "Contactar por WhatsApp" de esa tarjeta */
+  document.querySelectorAll('.card').forEach(function(card){
+    var contactLink = card.querySelector('.btn-contact');
+    var photo = card.querySelector('.card-photo');
+    if (!contactLink || !photo) return;
+    var badge = document.createElement('a');
+    badge.href = contactLink.href;
+    badge.target = '_blank';
+    badge.rel = 'noopener';
+    badge.className = 'wa-badge';
+    badge.setAttribute('aria-label', 'Contactar por WhatsApp');
+    badge.innerHTML = WA_ICON;
+    photo.appendChild(badge);
+  });
+
+  /* 3) Herramientas flotando en el hero para un look más dinámico */
+  var hero = document.querySelector('.hero');
+  if (hero) {
+    var tools = [
+      { path:'M9.5 2.5a4 4 0 0 0-5.5 5.5l9 9-1.5 1.5-9-9a4 4 0 0 0 5.5 5.5l9-9 3-3-2-2-3 3z', top:'12%', left:'6%', size:60, rot:-18, delay:'0s' },
+      { path:'M14.7 6.3a1 1 0 0 0-1.4 0l-8 8a1 1 0 0 0 0 1.4l3 3a1 1 0 0 0 1.4 0l8-8a1 1 0 0 0 0-1.4l-3-3zM2 22l5-1.5-3.5-3.5z', top:'62%', left:'12%', size:50, rot:14, delay:'1.5s' },
+      { path:'M12 2l1.8 4.6L18 8l-4.2 1.8L12 14l-1.8-4.2L6 8l4.2-1.4L12 2zM5 15l1 2.5L8.5 18l-2.5 1L5 21.5 4 19 1.5 18l2.5-.5L5 15z', top:'20%', left:'88%', size:44, rot:8, delay:'3s' },
+      { path:'M6 3h5l7 7-5 5-7-7V3zm2 2v2M20 15l-2 2 4 4 2-2-4-4z', top:'70%', left:'85%', size:56, rot:-10, delay:'.7s' }
+    ];
+    tools.forEach(function(t){
+      var wrap = document.createElement('div');
+      wrap.className = 'tool-float';
+      wrap.style.top = t.top;
+      wrap.style.left = t.left;
+      wrap.style.width = t.size + 'px';
+      wrap.style.height = t.size + 'px';
+      wrap.style.setProperty('--rot', t.rot + 'deg');
+      wrap.style.animationDelay = t.delay;
+      wrap.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="' + t.path + '"/></svg>';
+      hero.appendChild(wrap);
+    });
+  }
+})();
+</script>
+
+<!-- ======================================================
+     BLOQUE NUEVO 3: efectos especiales (orbes de luz, brillo
+     recorriendo botones, chispas) + herramientas "dibujadas a
+     mano" que se trazan solas con SVG. Agregado por encima de
+     todo lo anterior, sin modificar nada existente.
+     ====================================================== -->
+<style>
+  /* --- Orbes de luz flotando detrás del contenido del hero --- */
+  .fx-orb{
+    position:absolute; border-radius:50%; filter:blur(56px);
+    pointer-events:none; z-index:0; opacity:.4;
+    animation:fxOrbFloat 11s ease-in-out infinite;
+  }
+  @keyframes fxOrbFloat{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(26px,-22px) scale(1.14); }
+  }
+
+  /* --- Chispas / partículas titilando --- */
+  .fx-spark{
+    position:absolute; width:3px; height:3px; border-radius:50%;
+    background:#CFE0FF; pointer-events:none; z-index:1; opacity:0;
+    animation:fxSparkTwinkle 3.4s ease-in-out infinite;
+    box-shadow:0 0 6px 1px rgba(207,224,255,.8);
+  }
+  @keyframes fxSparkTwinkle{
+    0%,100%{ opacity:0; transform:scale(.4); }
+    50%{ opacity:.95; transform:scale(1); }
+  }
+
+  /* --- Brillo recorriendo los botones principales (efecto "shine") --- */
+  .btn-contact, .btn-primary, .search-panel button{
+    position:relative; overflow:hidden;
+  }
+  .btn-contact::after, .btn-primary::after, .search-panel button::after{
+    content:""; position:absolute; top:0; left:-60%; width:40%; height:100%;
+    background:linear-gradient(115deg, transparent 0%, rgba(255,255,255,.55) 50%, transparent 100%);
+    transform:skewX(-20deg);
+    animation:fxShine 3.6s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes fxShine{
+    0%{ left:-60%; }
+    35%{ left:130%; }
+    100%{ left:130%; }
+  }
+
+  /* --- Herramientas dibujadas a mano: se trazan y se borran en bucle --- */
+  .tool-sketch{
+    position:absolute; pointer-events:none; z-index:1; color:#AFC0EE;
+  }
+  .tool-sketch svg{ width:100%; height:100%; overflow:visible; }
+  .tool-sketch path, .tool-sketch rect, .tool-sketch line{
+    fill:none; stroke:currentColor; stroke-width:1.6;
+    stroke-linecap:round; stroke-linejoin:round;
+  }
+  .how{ position:relative; }
+
+  @media (prefers-reduced-motion: reduce){
+    .fx-orb, .fx-spark, .btn-contact::after, .btn-primary::after,
+    .search-panel button::after, .tool-sketch{ animation:none !important; display:none; }
+  }
+  @media (max-width:640px){
+    .fx-orb, .tool-sketch{ display:none; }
+  }
+</style>
+
+<script>
+(function(){
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+
+  /* 1) Orbes de luz + chispas dentro del hero */
+  var hero = document.querySelector('.hero');
+  if (hero) {
+    [
+      { top:'8%',  left:'18%', size:220, color:'rgba(51,88,214,.55)',  delay:'0s'   },
+      { top:'55%', left:'78%', size:260, color:'rgba(110,140,240,.5)', delay:'2.2s' },
+      { top:'70%', left:'8%',  size:180, color:'rgba(169,121,30,.35)', delay:'4.1s' }
+    ].forEach(function(o){
+      var orb = document.createElement('div');
+      orb.className = 'fx-orb';
+      orb.style.top = o.top; orb.style.left = o.left;
+      orb.style.width = o.size + 'px'; orb.style.height = o.size + 'px';
+      orb.style.background = o.color;
+      orb.style.animationDelay = o.delay;
+      hero.appendChild(orb);
+    });
+
+    for (var i = 0; i < 14; i++) {
+      var spark = document.createElement('div');
+      spark.className = 'fx-spark';
+      spark.style.top = (Math.random() * 90) + '%';
+      spark.style.left = (Math.random() * 96) + '%';
+      spark.style.animationDelay = (Math.random() * 3.4).toFixed(2) + 's';
+      hero.appendChild(spark);
+    }
+  }
+
+  /* 2) Herramientas "dibujadas a mano" (se trazan solas con SVG) */
+  var TOOLS = [
+    { // llave inglesa
+      vb:'0 0 24 24',
+      paths:['M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z']
+    },
+    { // destornillador
+      vb:'0 0 24 24',
+      paths:['M3 21l6.5-6.5', 'M9.5 14.5L19 5a2.1 2.1 0 0 0-3-3l-9.5 9.5', 'M14 3.5L20.5 10'],
+    },
+    { // rodillo de pintura
+      vb:'0 0 24 24',
+      paths:['M3 4h14v6H3z', 'M10 10v5', 'M10 15l6 6']
+    },
+    { // regla / cinta métrica
+      vb:'0 0 24 24',
+      paths:['M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0z',
+             'M8.5 6.5l2 2', 'M11.5 9.5l2 2', 'M14.5 12.5l2 2', 'M17.5 15.5l2 2']
+    }
+  ];
+  var SPOTS = [
+    { top:'14%', left:'4%',  size:64, container:'.hero' },
+    { top:'66%', left:'90%', size:52, container:'.hero' },
+    { top:'20%', left:'92%', size:46, container:'.how'  },
+    { top:'55%', left:'2%',  size:56, container:'.how'  }
+  ];
+
+  SPOTS.forEach(function(spot, i){
+    var host = document.querySelector(spot.container);
+    if (!host) return;
+    var tool = TOOLS[i % TOOLS.length];
+    var wrap = document.createElement('div');
+    wrap.className = 'tool-sketch';
+    wrap.style.top = spot.top;
+    wrap.style.left = spot.left;
+    wrap.style.width = spot.size + 'px';
+    wrap.style.height = spot.size + 'px';
+
+    var ns = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', tool.vb);
+    var els = [];
+    tool.paths.forEach(function(d){
+      var p = document.createElementNS(ns, 'path');
+      p.setAttribute('d', d);
+      svg.appendChild(p);
+      els.push(p);
+    });
+    wrap.appendChild(svg);
+    host.appendChild(wrap);
+
+    /* traza el ícono real usando su longitud exacta, luego lo borra y repite */
+    els.forEach(function(el, idx){
+      var len;
+      try { len = el.getTotalLength(); } catch(e){ len = 300; }
+      el.style.strokeDasharray = len;
+      el.style.strokeDashoffset = len;
+      var baseDelay = i * 900 + idx * 260;
+      if (el.animate) {
+        el.animate(
+          [
+            { strokeDashoffset: len, opacity: .85 },
+            { strokeDashoffset: 0, opacity: .85, offset: 0.55 },
+            { strokeDashoffset: 0, opacity: .85, offset: 0.8 },
+            { strokeDashoffset: -len, opacity: 0, offset: 1 }
+          ],
+          { duration: 5200, iterations: Infinity, delay: baseDelay, easing: 'ease-in-out' }
+        );
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
